@@ -4,7 +4,7 @@ var mudule = angular.module('starter', ['ionic', 'starter.controllers', 'starter
 mudule.run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
 		if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
 			cordova.plugins.Keyboard.disableScroll(true);
 		}
 		if (window.StatusBar) {
@@ -24,6 +24,7 @@ mudule.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider)
 	provider.state('tab', {
 		url: '/tab',
 		abstract: true,
+		cache:false,
 		templateUrl: 'templates/tabs.html'
 	});
 

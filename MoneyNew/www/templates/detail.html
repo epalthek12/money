@@ -1,4 +1,4 @@
-<ion-view cache-view="false" hide-back-button="true" title="">
+<ion-view cache-view="false" hide-back-button="true" title="상세">
     <ion-nav-buttons side="left">
         <button class="button back-button buttons button-clear header-item" ng-click="goBack()">
             <i class="icon ion-ios-arrow-back"> back</i>
@@ -43,8 +43,8 @@
          	</li>
 			<li class="item bg-repay" ng-repeat="repay in repayments">
 				<div class="fl h-40 ft-size-14">
-					<div>{{repay.registerDate | date : 'yyyy.MM.dd'}}</div>
-					<div>{{repay.registerDate | date : 'HH시 mm분'}}</div>
+					<div>{{repay.parseRegisterDate | date : 'yyyy.MM.dd'}}</div>
+					<div>{{repay.parseRegisterDate | date : 'HH시 mm분'}}</div>
 				</div>
 				<div class="fl mt-12 ml-15 ft-size-20 ft-b">
 					{{repay.repayment | currency:"":0}}원 

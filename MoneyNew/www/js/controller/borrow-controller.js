@@ -34,7 +34,6 @@ moduleCtrl.controller('BorrowCtrl', function($scope, $location, Service, Util, $
 		}
 		Service.all(['A'], sort).then(function (result) {
 	        for (var i = 0; i < result.length; i++) {
-	        	result[i].backColor = 'bg-rows';
 	            result[i].parseStartDate = Util.parseStringFromDateyyyyMMddHHmmss(result[i].startDate);
 	            if (result[i].endDate) {
 	            	result[i].isEndDate = true;

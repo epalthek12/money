@@ -1,4 +1,4 @@
-moduleCtrl.controller('DetailCtrl', function ($scope, $stateParams, $location, Service, $state, $ionicHistory, $cordovaSms, $ionicPlatform, Util) {
+moduleCtrl.controller('DetailCtrl', function ($scope, $stateParams, $location, Service, $state, $ionicHistory, $cordovaSms, $ionicPlatform, Util, Push) {
 	
 	init();
 	
@@ -14,7 +14,7 @@ moduleCtrl.controller('DetailCtrl', function ($scope, $stateParams, $location, S
         });
     	Service.getRepayMent([$stateParams.seq]).then(function (result) {
             for (var i = 0; i < result.length; i++) {
-                result[i].registerDate = Util.parseStringFromDateyyyyMMddHHmmss(result[i].registerDate);
+                result[i].parseRegisterDate = Util.parseStringFromDateyyyyMMddHHmmss(result[i].registerDate);
             }
             $scope.repayments = result;
         });
@@ -34,6 +34,7 @@ moduleCtrl.controller('DetailCtrl', function ($scope, $stateParams, $location, S
     	
     	alert.then(function(res){
     		if(res){
+				Push.unRegisterPush(res);
     			Service.deleteRepaymentAll([res]);
     			Service.deleteLedger([res]);
     			$ionicHistory.goBack();
@@ -51,6 +52,10 @@ moduleCtrl.controller('DetailCtrl', function ($scope, $stateParams, $location, S
     	
     	alert.then(function(res){
     		if(res){
+    			if($scope.data.alramYn == 'Y'){
+    				Push.unRegisterPush($scope.data.seq);
+        			Push.registerPush($scope.data);
+    			}
     			Service.deleteRepayment([res]);
     			Service.updateComplete(['N', $scope.data.seq]);
     			$state.go($state.current, {}, {
@@ -79,6 +84,7 @@ moduleCtrl.controller('DetailCtrl', function ($scope, $stateParams, $location, S
 					Util.showAlert('남은 금액을 초과했습니다. 다시 입력해 주세요.', null, [{text:'확인', type:'button-positive'}]);
 					return;
 				}else if($scope.data.sumMoney == res.money){
+					Push.unRegisterPush($scope.data.seq);
 					Service.updateComplete(['Y', $scope.data.seq]);
 				}
     			Service.insertRepayment([null, $scope.data.seq, res.money, Util.getCurrentDateStringyyyyMMddHHmmss()]);
