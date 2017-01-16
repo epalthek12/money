@@ -22,10 +22,10 @@ moduleCtrl.controller('LendCtrl', function($scope, $location, Service, Util, $io
 	function getData(sort){
 		switch (sort) {
 		case '0':
-			sort = "(CASE WHEN (A.end_date IS NULL OR A.end_date = '') THEN 1 ELSE 0 END)";
+			sort = "(CASE WHEN (A.end_date IS NULL OR A.end_date = '') THEN 1 ELSE 0 END), end_date";
 			break;
 		case '1':
-			sort = "complete_yn,(CASE WHEN (A.end_date IS NULL OR A.end_date = '') THEN 1 ELSE 0 END)";
+			sort = "complete_yn,(CASE WHEN (A.end_date IS NULL OR A.end_date = '') THEN 1 ELSE 0 END), end_date";
 			break;
 		case '2':
 			sort = "name";
@@ -34,10 +34,10 @@ moduleCtrl.controller('LendCtrl', function($scope, $location, Service, Util, $io
 		Service.all(['B'], sort).then(function (result) {
 	        for (var i = 0; i < result.length; i++) {
 	        	result[i].backColor = 'bg-rows';
-	            result[i].startDate = Util.parseStringFromDateyyyyMMddHHmmss(result[i].startDate);
+	            result[i].parseStartDate = Util.parseStringFromDateyyyyMMddHHmmss(result[i].startDate);
 	            if (result[i].endDate) {
 	            	result[i].isEndDate = true;
-	                result[i].endDate = Util.parseStringFromDateyyyyMMddHHmmss(result[i].endDate);
+	                result[i].parseEndDate = Util.parseStringFromDateyyyyMMddHHmmss(result[i].endDate);
 	            }
 	            if(result[i].sumMoney <= 0){
 	            	result[i].isComplete = true;

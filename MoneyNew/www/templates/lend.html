@@ -14,8 +14,8 @@
 				<a class="item {{data.backColor}}" href="#/detail/B/{{data.seq}}">
 					<p>
 						<span class="fl"><b>{{data.name}}</b></span>
-						<span class="fr" ng-show="data.isEndDate">{{data.startDate | date:'yyyy.MM.dd'}} ~ {{data.endDate | date:'yyyy.MM.dd'}}</span>
-						<span class="fr" ng-hide="data.isEndDate">{{data.startDate | date:'yyyy.MM.dd'}} ~ 미지정</span>
+						<span class="fr" ng-show="data.isEndDate">{{data.parseStartDate | date:'yyyy.MM.dd'}} ~ {{data.parseEndDate | date:'yyyy.MM.dd'}}</span>
+						<span class="fr" ng-hide="data.isEndDate">{{data.parseStartDate | date:'yyyy.MM.dd'}} ~ 미지정</span>
 					</p>
 					<p>
 						<span class="fl">꿔준 돈</span>

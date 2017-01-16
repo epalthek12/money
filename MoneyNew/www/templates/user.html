@@ -40,8 +40,8 @@
 				<a class="item bg-repay" href="#/detail/{{listData.type}}/{{listData.seq}}">
                 	<div class="icon arrow ion-chevron-right mt-22"></div>
                 	<div class="item-rows ft-size-13 cl-gray">
-                		<span class="fl" ng-show="listData.isEndDate">{{listData.startDate | date:'yyyy.MM.dd'}} ~ {{listData.endDate | date:'yyyy.MM.dd'}}</span>
-                		<span class="fl" ng-hide="listData.isEndDate">{{listData.startDate | date:'yyyy.MM.dd'}} ~ 미지정</span>
+                		<span class="fl" ng-show="listData.isEndDate">{{listData.parseStartDate | date:'yyyy.MM.dd'}} ~ {{listData.parseEndDate | date:'yyyy.MM.dd'}}</span>
+                		<span class="fl" ng-hide="listData.isEndDate">{{listData.parseStartDate | date:'yyyy.MM.dd'}} ~ 미지정</span>
                 	</div>
                 	<div class="item-rows ft-size-16 ft-b">
                 		<span class="fl cl-gray">{{listData.moneyTypeStr}}</span>

@@ -9,7 +9,7 @@ moduleCtrl.controller('RegisterCtrl', function ($scope, Service, $stateParams, U
     			date: new Date(),
     			mode: 'date',
     			doneButtonLabel: 'DONE',
-    			doneButtonColor: '#F2F3F4',
+    			doneButtonColor: '#356FDD',
     			cancelButtonLabel: 'CANCEL',
     			cancelButtonColor: '#000000'
     	};
@@ -127,7 +127,10 @@ moduleCtrl.controller('RegisterFormCtrl', function ($scope, Service, $ionicHisto
 				data.startDate = Util.parseDateFromStringyyyyMMdd(data.startDate);
 			}
 			if(data.endDate){
-				pushRegister(data);
+				if(data.alramYn == 'Y'){
+					Push.unRegisterPush(data.seq);
+					Push.registerPush(data);
+				}
 				data.endDate = Util.parseDateFromStringyyyyMMdd(data.endDate);
 			}
 			var param = [data.money, data.startDate, data.endDate, data.alramYn, data.note, data.seq];
@@ -148,7 +151,7 @@ moduleCtrl.controller('RegisterFormCtrl', function ($scope, Service, $ionicHisto
 		}
 		if(data.endDate){
 			if(data.alramYn == 'Y'){
-				pushRegister(data);
+				Push.registerPush(data);
 			}
 			data.endDate = Util.parseDateFromStringyyyyMMdd(data.endDate);
 		}
@@ -157,40 +160,11 @@ moduleCtrl.controller('RegisterFormCtrl', function ($scope, Service, $ionicHisto
 		var insertId = Service.insertLedger(param);
 		var buttons = [{text:'확인', type:'button-positive'}];
 		var alert = Util.showAlert('입력 되었습니다.', null, buttons);
-		
+
 		alert.then(function(res){
 			$ionicHistory.goBack();
 		});
 	}
 	
-	function pushRegister(data){
-		var pushDateOne = Util.dayCalcNoon(data.endDate, -1);
-		var pushDateThree = Util.dayCalcNoon(data.endDate, -3);
-		var pushDateWeek = Util.dayCalcNoon(data.endDate, -7);
-		
-		var prop = {
-				id:data.seq,
-				title:"Money",
-				text:data.name + " " + data.sumMoney,
-				at:pushDateOne
-		};
-		Push.registerPush(prop);
-		
-		var prop = {
-				id:data.seq,
-				title:"Money",
-				text:data.name + " " + data.sumMoney,
-				at:pushDateThree 
-		};
-		Push.registerPush(prop);
-		
-		var prop = {
-				id:data.seq,
-				title:"Money",
-				text:data.name + " " + data.sumMoney,
-				at:pushDateWeek
-		};
-		Push.registerPush(prop);
-	}
 });
 

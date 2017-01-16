@@ -4,10 +4,10 @@ moduleCtrl.controller('UserCtrl', function($scope, $stateParams, Service, Util, 
 	});
 	Service.getUserMoney([$stateParams.userSeq]).then(function(result){
 		for (var i = 0; i < result.length; i++) {
-			result[i].startDate = Util.parseStringFromDateyyyyMMddHHmmss(result[i].startDate);
+			result[i].parseStartDate = Util.parseStringFromDateyyyyMMddHHmmss(result[i].startDate);
             if (result[i].endDate) {
             	result[i].isEndDate = true;
-                result[i].endDate = Util.parseStringFromDateyyyyMMddHHmmss(result[i].endDate);
+                result[i].parseEndDate = Util.parseStringFromDateyyyyMMddHHmmss(result[i].endDate);
             } 
             result[i].moneyTypeColor = 'cl-green';
             result[i].moneyTypeStr = '꾼 돈';

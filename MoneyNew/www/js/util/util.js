@@ -48,6 +48,7 @@ moduleService.factory('Util', function($ionicLoading, $ionicPopup, $cordovaDateP
 	
 	self.dayCalcNoon = function(date, day){
 		var newDate = new Date();
+		newDate.setTime(date.getTime());
 		newDate.setDate(date.getDate() + day);
 		newDate.setHours(12);
 		newDate.setMinutes(00);
