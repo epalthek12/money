@@ -1,13 +1,8 @@
 <ion-modal-view>
-	<!-- <ion-header-bar>
-		<button class="button button-clear button-small fl ion-close-round">
-		</button>
-    </ion-header-bar> -->
-    <ion-nav-buttons side="left">
-        <button class="button back-button buttons button-clear header-item" ng-click="goBack()">
-            <i class="icon ion-ios-arrow-back"> back</i>
-        </button>
-    </ion-nav-buttons>
+	<ion-header-bar class="bar-calm">
+		<button class="button button-icon button-small fl ion-close-round" type="button" ng-click="modalClose()">
+	    </button>
+    </ion-header-bar>
     <ion-content ng-controller="ContactCtrl">
 		<ul class="list">
 			<li ng-repeat="contact in contacts">

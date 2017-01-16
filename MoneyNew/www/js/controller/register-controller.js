@@ -53,11 +53,14 @@ moduleCtrl.controller('RegisterCtrl', function ($scope, Service, $stateParams, U
     	$scope.modal.hide();
     };
     
+    $scope.modalClose = function(){
+    	$scope.modal.hide();
+    }
+    
     $scope.goBack = function () {
         $ionicHistory.goBack();
     };
-	
-	
+    
     if($stateParams.seq){
     	//상세
     	Service.get([$stateParams.seq]).then(function (data) {
