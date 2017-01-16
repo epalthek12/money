@@ -1,0 +1,11 @@
+<ion-tabs class="tabs-icon-top tabs-color-active-calm">
+	<ion-tab title="합계" icon-off="ion-ios-calculator-outline" icon-on="ion-home" href="#/tab/sum">
+		<ion-nav-view name="tab-sum"></ion-nav-view>
+	</ion-tab> 
+	<ion-tab title="꾼돈" icon-off="ion-ios-plus-outline" icon-on="ion-ios-plus" badge="badge.cnt" badge-style="badge-assertive" href="#/tab/borrow" ng-controller="BorrowTabCtrl">
+		<ion-nav-view name="tab-borrow"></ion-nav-view>
+	</ion-tab>
+	<ion-tab title="꿔준돈" icon-off="ion-ios-minus-outline" icon-on="ion-ios-minus" badge="badge.cnt" badge-style="badge-assertive" href="#/tab/lend"  ng-controller="LendTabCtrl">
+		<ion-nav-view name="tab-lend"></ion-nav-view>
+	</ion-tab>
+</ion-tabs>

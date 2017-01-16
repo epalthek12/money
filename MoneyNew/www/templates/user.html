@@ -1,0 +1,58 @@
+<ion-view cache-view="false" hide-back-button="true" title="">
+	<ion-nav-buttons side="left">
+        <button class="button back-button buttons button-clear header-item" ng-click="goBack()">
+            <i class="icon ion-ios-arrow-back"> back</i>
+        </button>
+    </ion-nav-buttons>
+	<ion-content>
+		<div class="item">
+			<span class="fl ft-b ft-size-18">{{data.name}}</span>
+			<span class="fl ml-15 ft-b ft-size-18">{{data.phoneNum}}</span>
+		</div>
+		<ul class="list">
+			<li class="item item-divider">
+				합계
+			</li>
+			<li class="item ft-b">
+				<p>
+					<span class="fl ft-size-16 cl-gray">꾼 돈</span>
+					<span class="fr ft-size-16">{{data.borrowMoney | currency:"":0}}원</span>
+				</p>
+				<p>
+					<span class="fl ft-size-16 cl-gray">남은 돈</span>
+					<span class="fr ft-size-16">{{data.borrowMoney-data.borrowSumMoney | currency:"":0}}원</span>
+				</p>
+				<p>
+					<span class="fl ft-size-16 cl-gray">꿔준 돈</span>
+					<span class="fr ft-size-16">{{data.lendMoney | currency:"":0}}원</span>
+				</p>
+				<p>
+					<span class="fl ft-size-16 cl-gray">남은 돈</span>
+					<span class="fr ft-size-16">{{data.lendMoney-data.lendSumMoney | currency:"":0}}원</span>
+				</p>
+			</li>
+		</ul>
+		<ul class="list list-inset">
+			<li class="item item-divider">
+				리스트
+			</li>
+			<li ng-repeat="listData in list">
+				<a class="item bg-repay" href="#/detail/{{listData.type}}/{{listData.seq}}">
+                	<div class="icon arrow ion-chevron-right mt-22"></div>
+                	<div class="item-rows ft-size-13 cl-gray">
+                		<span class="fl" ng-show="listData.isEndDate">{{listData.startDate | date:'yyyy.MM.dd'}} ~ {{listData.endDate | date:'yyyy.MM.dd'}}</span>
+                		<span class="fl" ng-hide="listData.isEndDate">{{listData.startDate | date:'yyyy.MM.dd'}} ~ 미지정</span>
+                	</div>
+                	<div class="item-rows ft-size-16 ft-b">
+                		<span class="fl cl-gray">{{listData.moneyTypeStr}}</span>
+                		<span class="fr mr-25">{{listData.money | currency:"":0}}원</span>
+                	</div>
+                	<div class="item-rows ft-size-16 ft-b">
+                		<span class="fl cl-gray">남은 돈</span>
+                		<span class="fr mr-25">{{listData.sumMoney | currency:"":0}}원</span>
+                	</div>
+                </a>
+			</li>
+		</ul>
+	</ion-content>
+</ion-view>

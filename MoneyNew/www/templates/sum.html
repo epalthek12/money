@@ -1,0 +1,79 @@
+<ion-view cache-view="false">
+	<ion-content>
+		<ul class="list list-inset">
+			<!-- <li class="item item-divider item-light text-center">
+				<b>꾼 돈</b>
+			</li> -->
+			<li class="item">
+				<span class="cl-gray ft-b">꾼 돈</span>
+				<span class="item-note ft-size-16 ft-b cl-black">
+					{{borrowAllMoney | currency:"":0}}원
+				</span>
+			</li>
+			<li class="item">
+				<span class="cl-gray ft-b">갚은 돈</span>
+				<span class="item-note ft-size-16 ft-b cl-black">
+					{{borrowAllRepayment | currency:"":0}}원
+				</span>
+			</li>
+			<li class="item">
+				<span class="cl-gray ft-b">남은 돈</span>
+				<span class="item-note ft-size-16 ft-b cl-black">
+					{{borrowAllsum | currency:"":0}}원
+				</span>
+			</li>
+			<li>
+                <a class="item" href="#/detail/A/{{borrowSchedule.seq}}" ng-show="borrowScheduleFlag">
+                	<div class="icon arrow ion-chevron-right"></div>
+                	<div class="item-rows ft-size-13 cl-gray">
+                		{{borrowSchedule.startDate | date:'yyyy.MM.dd'}}~{{borrowSchedule.endDate | date:'yyyy.MM.dd'}}
+                	</div>
+                	<div class="item-rows ft-size-16 ft-b cl-black">
+                		{{borrowSchedule.name}} {{borrowSchedule.money | currency:"":0}}원
+                	</div>
+                </a>
+                <div class="item text-center" ng-hide="borrowScheduleFlag">
+					상환 일정이 없습니다.
+                </div>
+            </li>
+            </ul>
+            <ul class="list list-inset">
+			<!-- <li class="item item-divider item-assertive text-center">
+				<b>꿔준 돈</b>
+			</li> -->
+			<li class="item">
+				<span class="cl-gray ft-b">꿔준 돈</span>
+				<span class="item-note ft-size-16 ft-b cl-black">
+					{{lentAllMoney | currency:"":0}}원
+				</span>
+			</li>
+			<li class="item">
+				<span class="cl-gray ft-b">받은 돈</span>
+				<span class="item-note ft-size-16 ft-b cl-black">
+					{{lentAllRepayment | currency:"":0}}원
+				</span>
+			</li>
+			<li class="item">
+				<span class="cl-gray ft-b">남은 돈</span>
+				<span class="item-note ft-size-16 ft-b cl-black">
+					{{lentAllsum | currency:"":0}}원
+				</span>
+			</li>
+			<li>
+                <a class="item" href="#/detail/B/{{lentSchedule.seq}}" ng-show="lentScheduleFlag">
+                	<div class="icon arrow ion-chevron-right"></div>
+                	<div class="item-rows ft-size-13 cl-gray">
+                		{{lentSchedule.startDate | date:'yyyy.MM.dd'}} ~ {{lentSchedule.endDate | date:'yyyy.MM.dd'}}
+                	</div>
+                	<div class="item-rows ft-size-16 ft-b cl-black">
+                		{{lentSchedule.name}} {{lentSchedule.money | currency:"":0}}원
+                	</div>
+                </a>
+                <div class="item text-center" ng-hide="lentScheduleFlag">
+					상환 일정이 없습니다.
+                </div>
+            </li>
+            </ul>
+	</ion-content>
+</ion-view>
+

@@ -1,0 +1,70 @@
+<ion-view cache-view="false" hide-back-button="true" title="">
+    <ion-nav-buttons side="left">
+        <button class="button back-button buttons button-clear header-item" ng-click="goBack()">
+            <i class="icon ion-ios-arrow-back"> back</i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form id="form" name="form" ng-submit="execute()" ng-controller="RegisterFormCtrl">
+            <input type="hidden" ng-model="data.seq">
+            <input type="hidden" ng-model="data.userSeq">
+            <input type="hidden" ng-model="data.type">
+            <ul class="list">
+            	<li class="item">
+                    <button class="button icon icon-left ion-close button-calm button-small i-btn fr" type="button">취소</button>
+            		<button class="button icon icon-left ion-clipboard button-calm button-small i-btn fr mr-5" type="submit">저장</button>
+            	</li>
+            	<li class="item">
+            		<label class="item item-input lb-in-btn fl">
+					    <span class="lb-in-sp">닉네임</span>
+					    <input type="text" name="name" placeholder="필수 입력 사항" ng-model="data.name" required>
+					</label>
+					<button type="button" class="button icon icon-left ion-person button-calm button-small fr i-btn" ng-click="contact()">주소록</button>
+            	</li>
+            	<li class="item">
+            		<label class="item item-input lb-in-no">
+	            		<span class="lb-in-sp">전호 번호</span>
+	                    <input type="text" name="phoneNum" placeholder="선택 입력 사항" ng-model="data.phoneNum" >
+            		</label>
+            	</li>
+            	<li class="item">
+            		<div>날짜</div>
+            		<div class="mt-5"> 
+	                    <span class="vt-al-mid">{{data.startDate | date:'yyyy.MM.dd'}}</span>
+	                    <button type="button" class="button icon icon-left ion-calendar button-calm button-small i-btn" ng-click="showDatePicker('A')">시작</button>
+	                    <span class="vt-al-mid">~</span>
+	                    <span class="vt-al-mid" ng-hide="isEndDate">미지정</span>
+	                    <span class="vt-al-mid" ng-show="isEndDate">{{data.endDate | date:'yyyy.MM.dd'}}</span>
+	                    <button type="button" class="button icon icon-left ion-calendar button-calm button-small i-btn" ng-click="showDatePicker('B')" ng-show="isEndDate">종료</button>
+            		</div>
+                    <div>
+                    	<span>
+                    		<label class="checkbox pl-0 checkbox-calm">
+                    			<input class="in-cb " type="checkbox" ng-model="data.checked" ng-change="endDateCheck()" >
+                    			갚는 날
+                    		</label>
+                    	</span>
+                    	<span> 
+                    		<label class="checkbox checkbox-calm">
+                    			<input class="in-cb" type="checkbox" ng-model="data.alramYn" ng-true-value="'Y'" ng-false-value="'N'">
+                    			<span>알림 기능</span>
+                    		</label>
+                    	</span>
+                    </div>
+            	</li>
+            	<li class="item">
+            		<label class="item item-input lb-in-no">
+	            		<span class="lb-in-sp">금액</span>
+	                    <input type="number" name="money" placeholder="필수 입력 사항" ng-model="data.money" required>
+            		</label>
+            	</li>
+            	<li class="item">
+            		<label class="item item-input lb-in-no">
+                        <span class="lb-in-sp">비고</span>
+                        <input type="text" name="note" placeholder="선택 입력 사항" ng-model="data.note">
+                    </label>
+            	</li>
+            </ul>
+        </form>
+    </ion-content>
+</ion-view>

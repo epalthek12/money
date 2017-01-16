@@ -1,0 +1,57 @@
+<ion-view cache-view="false" hide-back-button="true" title="">
+    <ion-nav-buttons side="left">
+        <button class="button back-button buttons button-clear header-item" ng-click="goBack()">
+            <i class="icon ion-ios-arrow-back"> back</i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+    	 <ul class="list">
+            <li class="item">
+            	<button class="button icon ion-person button-calm button-small fl" type="button"
+            		ng-click="go('/user/' + data.userSeq)"></button>
+            	<span class="fl ml-5 mt-3">{{data.name}}</span>
+            	<button class="button icon icon-left ion-close button-calm button-small i-btn fr" type="button"
+            		ng-click="ledgerDelete()">삭제</button>
+            	<button class="button icon icon-left ion-clipboard button-calm button-small i-btn fr mr-5" type="button"
+            		ng-click="go('/register/'+ data.type + '/' + data.seq)">수정</button>
+            </li> 
+            <li class="item">
+            	<span class="fl cl-gray ft-b">날짜</span>
+            	<span class="fr" ng-show="data.isEndDate">{{data.startDate | date:'yyyy.MM.dd'}} ~ {{data.endDate | date:'yyyy.MM.dd'}}</span>
+            	<span class="fr" ng-hide="data.isEndDate">{{data.startDate | date:'yyyy.MM.dd'}} ~ 미지정</span>
+            </li>
+            <li class="item">
+            	<span class="fl cl-gray ft-b">{{subject.moneyTypeStr}}</span>
+            	<span class="fr">{{data.money | currency:"":0}}원</span>
+            </li>
+            <li class="item">
+            	<span class="fl cl-gray ft-b">남은 돈</span>
+            	<span class="fr">{{data.sumMoney | currency:"":0}}원</span>
+            </li>
+            <li class="item">
+            	<span class="fl cl-gray ft-b">비고</span>
+            	<span class="fr">{{data.note}}</span>
+            </li>
+         </ul>
+         
+         <ul class="list list-inset" >
+         	<li class="item">
+            	<button class="button icon icon-left ion-social-usd button-calm button-small i-btn fr" type="button"
+            		ng-click="repaymentAdd()">{{subject.repayTypeStr}}</button>
+            	<button class="button icon icon-left ion-chatbox button-calm button-small i-btn fr mr-5" type="button"
+            		ng-click="sendSMS()">SMS</button>
+         	</li>
+			<li class="item bg-repay" ng-repeat="repay in repayments">
+				<div class="fl h-40 ft-size-14">
+					<div>{{repay.registerDate | date : 'yyyy.MM.dd'}}</div>
+					<div>{{repay.registerDate | date : 'HH시 mm분'}}</div>
+				</div>
+				<div class="fl mt-12 ml-15 ft-size-20 ft-b">
+					{{repay.repayment | currency:"":0}}원 
+				</div> 
+				<button class="button icon ion-minus button-assertive button-small fr mt-5 bd-rd-20 min-wd-30" type="button"
+					ng-click="repaymentDelete({{repay.seq}})"></button>
+    		</li>
+    	</ul>
+    </ion-content>
+</ion-view>

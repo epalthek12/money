@@ -1,0 +1,45 @@
+.arrow{float: right; height: 40px; margin-top: 12px;} /* icon button */
+.item-rows{height: 20px;} /* icon button */
+.i-btn{line-height: 25px;} /* icon button */
+.h-40{height: 40px;} /* height 40px; */
+.fr{float: right;} /* float right */
+.fl{float: left;} /* float left */
+.mr-5{margin-right: 5px;} /* margin right 5px; */
+.mr-15{margin-right: 15px;} /* margin right 15px; */
+.mr-25{margin-right: 25px;} /* margin right 25px; */
+.ml-5{margin-left: 5px;} /* margin left 5px; */
+.ml-10{margin-left: 10px;} /* margin left 10px; */
+.ml-15{margin-left: 15px;} /* margin left 15px; */
+.mt-3{margin-top: 3px;} /* margin top 3px; */
+.mt-5{margin-top: 5px;} /* margin top 5px; */
+.mt-12{margin-top: 12px;} /* margin top 12px; */
+.mt-22{margin-top: 22px;} /* margin top 22px; */
+.pl-0{padding-left: 0px;} /* padding left 0px; */
+.lb-in-btn{height: 32px; width: 80%;} /* label input button */
+.lb-in-no{height: 32px;} /* label input normal */
+.lb-in-sp{margin-right: 12px; font-size: 15px;} /* label input span */
+.in-txt-no{display: inline !important;} /* input text normal */
+.in-txt-date{width: 65px;}
+.vt-al-mid{vertical-align: middle;} /* vertical align middle */
+.in-cb{display: inline-block !important; vertical-align: middle;} /* display inline block*/
+.in-cb-snd{display: inline-block !important; vertical-align: middle;} /* display inline block*/
+.ft-b{font-weight: bold;} /* font weight bold */
+.ft-size-20{font-size: 20px;} /* font size 20px; */
+.ft-size-18{font-size: 18px;} /* font size 18px; */
+.ft-size-16{font-size: 16px;} /* font size 16px; */
+.ft-size-14{font-size: 14px;} /* font size 14px; */
+.ft-size-13{font-size: 13px;} /* font size 13px; */
+.cl-sub{color: #5070AD;} /* color subject */
+.cl-red{color: red;} /* color red */
+.cl-gray{color: gray;} /* color gray */
+.cl-blue{color: blue;} /* color blue */
+.cl-black{color: black;} /* color black */
+.cl-green{color: green;} /* color green */
+.cl-orange{color: orange;} /* color orange */
+.bg-repay{background-color: #EEEEEE;} /* background color repay rows */
+.bg-complete{background-color: #D5D1D1;} /* background complete rows */
+.bg-rows{background-color: #eff0f1;} /* background list rows */
+.bd-rd-20{border-radius:20px;} /* border radius 20px */
+.min-wd-30{min-width: 30px;} /* min width 30px */
+.box{border: 5px solid #e9e9e9;} /* box border */ 
+.box-left{border-left: 5px solid #e9e9e9;} /* box left border */

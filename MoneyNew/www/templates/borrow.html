@@ -1,0 +1,33 @@
+<ion-view cache-view="false" title="꾼 돈"> 
+	<ion-content>
+		<div class="item item-button item-select">
+			<select ng-model="sort" ng-change="orderBy(sort)">
+				<option value="0">날짜 순</option>
+				<option value="1" >완납/미납 순</option>
+				<option value="2">이름 순</option>
+			</select>
+			<button class="button icon icon-left ion-plus button-small button-calm ibtn" 
+				ng-click="go('/register/A/')"> 등록</button>
+		</div>
+		<ul class="list" >
+			<li ng-repeat="data in list">
+				<a class="item {{data.backColor}}" href="#/detail/A/{{data.seq}}">
+					<p>
+						<span class="fl"><b>{{data.name}}</b></span>
+						<span class="fr" ng-show="data.isEndDate">{{data.startDate | date:'yyyy.MM.dd'}} ~ {{data.endDate | date:'yyyy.MM.dd'}}</span>
+						<span class="fr" ng-hide="data.isEndDate">{{data.startDate | date:'yyyy.MM.dd'}} ~ 미지정</span>
+					</p>
+					<p>
+						<span class="fl">꾼 돈</span>
+						<span class="fr">{{data.money | currency:"":0}}원</span>
+					</p>
+					<p> 
+						<span class="fl">남은 돈</span>
+						<span class="fr" ng-hide="data.isComplete">{{data.sumMoney | currency:"":0}}원</span>
+						<span class="fr" ng-show="data.isComplete">완납</span>
+					</p>
+				</a>
+			</li>
+		</ul>
+	</ion-content> 
+</ion-view>
