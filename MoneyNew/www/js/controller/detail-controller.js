@@ -8,6 +8,7 @@ moduleCtrl.controller('DetailCtrl', function ($scope, $stateParams, $location, S
             result.startDate = Util.parseStringFromDateyyyyMMddHHmmss(result.startDate);
             if (result.endDate) {
             	result.isEndDate = true;
+            	result.pushKey = Util.parseDateFromStringyyyyMMdd(data.endDate);
                 result.endDate = Util.parseStringFromDateyyyyMMddHHmmss(result.endDate);
             } 
             $scope.data = result;
@@ -34,7 +35,8 @@ moduleCtrl.controller('DetailCtrl', function ($scope, $stateParams, $location, S
     	
     	alert.then(function(res){
     		if(res){
-				Push.unRegisterPush(res);
+    			
+				Push.unRegisterPush($scope.data.pushKey);
     			Service.deleteRepaymentAll([res]);
     			Service.deleteLedger([res]);
     			$ionicHistory.goBack();
@@ -53,7 +55,7 @@ moduleCtrl.controller('DetailCtrl', function ($scope, $stateParams, $location, S
     	alert.then(function(res){
     		if(res){
     			if($scope.data.alramYn == 'Y'){
-    				Push.unRegisterPush($scope.data.seq);
+    				Push.unRegisterPush($scope.data.pushKey);
         			Push.registerPush($scope.data);
     			}
     			Service.deleteRepayment([res]);
@@ -84,7 +86,7 @@ moduleCtrl.controller('DetailCtrl', function ($scope, $stateParams, $location, S
 					Util.showAlert('남은 금액을 초과했습니다. 다시 입력해 주세요.', null, [{text:'확인', type:'button-positive'}]);
 					return;
 				}else if($scope.data.sumMoney == res.money){
-					Push.unRegisterPush($scope.data.seq);
+					Push.unRegisterPush($scope.data.pushKey);
 					Service.updateComplete(['Y', $scope.data.seq]);
 				}
     			Service.insertRepayment([null, $scope.data.seq, res.money, Util.getCurrentDateStringyyyyMMddHHmmss()]);

@@ -128,7 +128,8 @@ moduleCtrl.controller('RegisterFormCtrl', function ($scope, Service, $ionicHisto
 			}
 			if(data.endDate){
 				if(data.alramYn == 'Y'){
-					Push.unRegisterPush(data.seq);
+					data.pushKey = Util.parseDateFromStringyyyyMMdd(data.endDate);
+					Push.unRegisterPush(data.pushKey);
 					Push.registerPush(data);
 				}
 				data.endDate = Util.parseDateFromStringyyyyMMdd(data.endDate);
@@ -151,6 +152,7 @@ moduleCtrl.controller('RegisterFormCtrl', function ($scope, Service, $ionicHisto
 		}
 		if(data.endDate){
 			if(data.alramYn == 'Y'){
+				data.pushKey = Util.parseDateFromStringyyyyMMdd(data.endDate);
 				Push.registerPush(data);
 			}
 			data.endDate = Util.parseDateFromStringyyyyMMdd(data.endDate);
